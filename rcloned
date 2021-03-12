@@ -37,7 +37,7 @@ do_start(){
 	else
 		fusermount -zuq $LOCAL >/dev/null 2>&1
 		mkdir -p $LOCAL
-		sudo /usr/bin/rclone mount $NAME:$REMOTE $LOCAL --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 >/dev/null 2>&1 &
+		sudo /usr/bin/rclone mount $NAME:$REMOTE $LOCAL --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --vfs-cache-mode full >/dev/null 2>&1 &
 		sleep 2s
 		check_running
 		if [[ $? -eq 0 ]]; then
